@@ -3,7 +3,7 @@ set -e
 
 ## 克隆仓库到本地
 echo "clone repository..."
-git clone https://github.com/frontend-winter/sharelist.git sharelist
+git clone https://github.com/lyy0709/sharelist.git sharelist
 
 
 # 设置目录名
