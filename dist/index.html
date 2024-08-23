@@ -34,27 +34,20 @@
     </style>
   </head>
   <body>
-    <div class="top-bar-guidance" id="top-bar-guidance">
+    <!-- 微信浏览器不支持访问的提示 -->
+    <div class="top-bar-guidance" id="top-bar-guidance" style="display: none;">
         <p>点击右上角<img src="/list/assets/common/images/3dian.png" class="icon-safari">在 浏览器 打开</p>
         <p>苹果设备<img src="/list/assets/common/images/iphone.png" class="icon-safari">安卓设备<img src="/list/assets/common/images/android.png" class="icon-safari">↗↗↗</p>
     </div>
     
-    <div id="contens">
+    <div id="contens" style="display: none;">
         <p><br/><br/></p>
         <p>1.本站不支持 微信或QQ 内访问</p>
         <p><br/></p>
         <p>2.请按提示在手机 浏览器 打开</p>
     </div>
-    
-    <p><br/><br/></p>
-    <div class="app-download-tip">
-        <span class="guidance-desc">https://webchat-ai.com//</span>
-    </div>
-    <p><br/></p>
-    <div class="app-download-tip">
-        <span class="guidance-desc">点击右上角···图标 or 复制网址自行打开</span>
-    </div>
-    
+
+    <!-- 正常页面内容 -->
     <div id="app"></div>
 
     <script>
@@ -65,7 +58,12 @@
 
       if (isWeChatBrowser()) {
         document.getElementById('top-bar-guidance').style.display = 'block';
+        document.getElementById('contens').style.display = 'block';
         document.getElementById('app').style.display = 'none';
+      } else {
+        document.getElementById('top-bar-guidance').style.display = 'none';
+        document.getElementById('contens').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
       }
     </script>
   </body>
