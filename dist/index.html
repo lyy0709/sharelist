@@ -7,47 +7,108 @@
     <title>Choose-car</title>
     <script type="module" crossorigin src="/list/assets/index-d5xjKaED.js"></script>
     <link rel="stylesheet" crossorigin href="/list/assets/index-W7IvkzdD.css">
+    <style>
+      body, html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+      }
+      #wx-browser-warning {
+        display: none;
+        text-align: center;
+        padding-top: 50px;
+        font-size: 18px;
+        color: #333;
+      }
+      #wx-browser-warning img {
+        width: 50px;
+      }
+      .top-bar-guidance {
+        font-size: 15px;
+        color: #fff;
+        line-height: 1.8;
+        padding-left: 20px;
+        padding-top: 20px;
+        background: url(/assets/common/images/banner.png) center top/contain no-repeat;
+      }
+      .top-bar-guidance .icon-safari {
+        width: 25px;
+        height: 25px;
+        vertical-align: middle;
+        margin: 0 .2em;
+      }
+      #contens {
+        font-weight: bold;
+        color: #2466f4;
+        margin: -285px 0px 10px;
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 125px;
+      }
+      .app-download-tip {
+        margin: 0 auto;
+        width: 290px;
+        text-align: center;
+        font-size: 15px;
+        color: #2466f4;
+      }
+      .app-download-tip .guidance-desc {
+        background-color: #fff;
+        padding: 0 5px;
+      }
+      .app-download-btn {
+        display: block;
+        width: 214px;
+        height: 40px;
+        line-height: 40px;
+        margin: 18px auto 0 auto;
+        text-align: center;
+        font-size: 18px;
+        color: #2466f4;
+        border-radius: 20px;
+        border: 0.5px #2466f4 solid;
+        text-decoration: none;
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
-    <div id="container" style="display: none">
-      <div style='position:relative;padding-top:100px;color:#333;font-size: 22px;text-align: center;'>
-        <i style='position: absolute;top: 10px;right: 10px;font-size: 100px' class='iconfont icon-jiantou'></i>
-        <p style="font-weight: 600;">请点击屏幕右上角 [ ··· ] </p>
-        <p>在 <i style='font-size: 60px;color: #1487F0' class='iconfont icon-browser'></i> 浏览器打开</p>
+    <!-- 微信浏览器的提示页面 -->
+    <div id="wx-browser-warning">
+      <div class="top-bar-guidance">
+        <p>点击右上角<img src="/assets/common/images/3dian.png" class="icon-safari">在 浏览器 打开</p>
+        <p>苹果设备<img src="/assets/common/images/iphone.png" class="icon-safari">安卓设备<img src="/assets/common/images/android.png" class="icon-safari">↗↗↗</p>
+      </div>
+
+      <div id="contens">
+        <p><br/><br/></p>
+        <p>1. 本站不支持 微信或QQ 内访问</p>
+        <p><br/></p>
+        <p>2. 请按提示在手机 浏览器 打开</p>
+      </div>
+
+      <div class="app-download-tip">
+        <span class="guidance-desc">https://webchat-ai.com/</span>
+      </div>
+      <div class="app-download-tip">
+        <span class="guidance-desc">点击右上角···图标 or 复制网址自行打开</span>
       </div>
     </div>
+
+    <!-- 正常显示的内容 -->
+    <div id="app"></div>
+
+    <script>
+      function isWeChatBrowser() {
+        var ua = navigator.userAgent.toLowerCase();
+        return ua.indexOf('micromessenger') !== -1;
+      }
+
+      if (isWeChatBrowser()) {
+        document.getElementById('wx-browser-warning').style.display = 'block';
+        document.getElementById('app').style.display = 'none';
+      }
+    </script>
   </body>
-  <script>
-  /*
-   * 智能手机浏览器版本信息:
-   */
-  var browser = {
-    versions: function () {
-      var u = navigator.userAgent, app = navigator.appVersion;
-      return {//移动终端浏览器版本信息
-        trident: u.indexOf('Trident') > -1, //IE内核
-        presto: u.indexOf('Presto') > -1, //opera内核
-        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-        gecko: u.indexOf('Gecko') > -1 && u.indexOf('Khtml') == -1, //火狐内核
-        mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
-        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
-        iPad: u.indexOf('iPad') > -1, //是否iPad
-        webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
-        wx: u.indexOf("MicroMessenger") > 0 //是否是微信
-      };
-    }(),
-    language: (navigator.browserLanguage || navigator.language).toLowerCase()
-  };
-
-  var container = document.getElementById("container");
-  var app = document.getElementById("app");
-
-  if (browser.versions.wx) {
-    container.style.display = "block";
-    app.style.display = "none"; // 隐藏其他内容
-  }
-  </script>
 </html>
