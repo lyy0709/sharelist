@@ -1,5 +1,5 @@
 <template>
-  <a href="https://github.com/frontend-winter/sharelist" class="github-link" target="_blank" style="width: 48px; height: 48px;">
+  <a href="https://github.com/lyy0709/sharelist" class="github-link" target="_blank" style="width: 48px; height: 48px;">
     <img src="@/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub" width="100%" style="border-radius: 50%">
   </a>
 </template>
