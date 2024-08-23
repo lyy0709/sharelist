@@ -48,11 +48,11 @@
     </div>
     
     <p><br/><br/></p>
-    <div class="app-download-tip">
+    <div class="app-download-tip" id="app-download-tip-1" style="display: none;">
         <span class="guidance-desc">https://webchat-ai.com/</span>
     </div>
     <p><br/></p>
-    <div class="app-download-tip">
+    <div class="app-download-tip" id="app-download-tip-2" style="display: none;">
         <span class="guidance-desc">点击右上角···图标 or 复制网址自行打开</span>
     </div>
 
@@ -68,10 +68,14 @@
       if (isWeChatBrowser()) {
         document.getElementById('top-bar-guidance').style.display = 'block';
         document.getElementById('contens').style.display = 'block';
+        document.getElementById('app-download-tip-1').style.display = 'block';
+        document.getElementById('app-download-tip-2').style.display = 'block';
         document.getElementById('app').style.display = 'none';
       } else {
         document.getElementById('top-bar-guidance').style.display = 'none';
         document.getElementById('contens').style.display = 'none';
+        document.getElementById('app-download-tip-1').style.display = 'none';
+        document.getElementById('app-download-tip-2').style.display = 'none';
         document.getElementById('app').style.display = 'block';
       }
     </script>
