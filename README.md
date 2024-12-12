@@ -19,7 +19,7 @@
 
 ## 一键快速替换前端页面：
 ```shell
-curl -sSfL https://raw.githubusercontent.com/frontend-winter/sharelist/master/quick-install/quick-list.sh | bash
+curl -sSfL https://raw.githubusercontent.com/lyy0709/sharelist/master/quick-install/quick-list.sh | bash
 ```
 
 ![Image text](./quick-install/home.png)

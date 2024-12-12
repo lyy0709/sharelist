@@ -1,7 +1,7 @@
 <template>
   <WechatAlert />
   <n-config-provider :theme="isDarkTheme ? darkTheme : ''" v-if="!isWechat">
-    <GitHub />
+    <Mirror />
     <n-loading-bar-provider>
       <Index :isDarkTheme="isDarkTheme" @changeIsDarkTheme="changeIsDarkTheme" />
     </n-loading-bar-provider>
