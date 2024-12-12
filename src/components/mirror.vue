@@ -1,17 +1,17 @@
 <template>
-  <a href="https://github.com/lyy0709/sharelist" class="github-link" target="_blank" style="width: 48px; height: 48px;">
-    <img src="@/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub" width="100%" style="border-radius: 50%">
+  <a href="https://login-gpt.com" class="mirror-link" target="_blank" style="width: 200px; height: 40px;">
+    <img src="@/assets/mirror.png" alt="mirror" width="100%" style="border-radius: 20%">
   </a>
 </template>
 
 <script>
 export default {
-  name: 'GitHubCorner'
+  name: 'mirrorCorner'
 }
 </script>
 
 <style scoped>
-.github-link {
+.mirror-link {
   position: fixed;
   top: 10px;      /* 可以根据需要调整边距 */
   right: 10px;    /* 可以根据需要调整边距 */

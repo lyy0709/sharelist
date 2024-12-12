@@ -16,7 +16,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         // 替换成你的share域名
-        target: 'https://xx.xx.xx',
+        target: 'https://dallopen.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

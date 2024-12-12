@@ -5,78 +5,21 @@
     <link rel="icon" href="/list/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose-car</title>
-    <script type="module" crossorigin src="/list/assets/index-d5xjKaED.js"></script>
-    <link rel="stylesheet" crossorigin href="/list/assets/index-W7IvkzdD.css">
-    <style>
-        body,html{width:100%;height:100%}
-        *{margin:0;padding:0}
-        body{background-color:#fff}
-        #browser img{
-            width:50px;
-        }
-        #browser{
-            margin: 0px 10px;
-            text-align:center;
-        }
-        #contens{
-            font-weight: bold;
-            color: #2466f4;
-            margin:-285px 0px 10px;
-            text-align:center;
-            font-size:20px;
-            margin-bottom: 125px;
-        }
-        .top-bar-guidance{font-size:15px;color:#fff;height:70%;line-height:1.8;padding-left:20px;padding-top:20px;background:url(/list/assets/common/images/banner.png) center top/contain no-repeat}
-        .top-bar-guidance .icon-safari{width:25px;height:25px;vertical-align:middle;margin:0 .2em}
-        .app-download-tip{margin:0 auto;width:290px;text-align:center;font-size:15px;color:#2466f4;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAcAQMAAACak0ePAAAABlBMVEUAAAAdYfh+GakkAAAAAXRSTlMAQObYZgAAAA5JREFUCNdjwA8acEkAAAy4AIE4hQq/AAAAAElFTkSuQmCC) left center/auto 15px repeat-x}
-        .app-download-tip .guidance-desc{background-color:#fff;padding:0 5px}
-        .app-download-btn{display:block;width:214px;height:40px;line-height:40px;margin:18px auto 0 auto;text-align:center;font-size:18px;color:#2466f4;border-radius:20px;border:.5px #2466f4 solid;text-decoration:none}
-    </style>
+    <script type="module" crossorigin src="/list/assets/index-BYlu6lq8.js"></script>
+    <link rel="stylesheet" crossorigin href="/list/assets/index-fbjD45KH.css">
   </head>
   <body>
-    <!-- 微信浏览器不支持访问的提示 -->
-    <div class="top-bar-guidance" id="top-bar-guidance" style="display: none;">
-        <p>点击右上角<img src="/list/assets/common/images/3dian.png" class="icon-safari">在 浏览器 打开</p>
-        <p>苹果设备<img src="/list/assets/common/images/iphone.png" class="icon-safari">安卓设备<img src="/list/assets/common/images/android.png" class="icon-safari">↗↗↗</p>
-    </div>
-    
-    <div id="contens">
-        <p><br/><br/></p>
-        <p>1.本站不支持 微信或QQ 内访问</p>
-        <p><br/></p>
-        <p>2.请按提示在手机 浏览器 打开</p>
-    </div>
-    
-    <p><br/><br/></p>
-    <div class="app-download-tip" id="app-download-tip-1" style="display: none;">
-        <span class="guidance-desc">https://webchat-ai.com/</span>
-    </div>
-    <p><br/></p>
-    <div class="app-download-tip" id="app-download-tip-2" style="display: none;">
-        <span class="guidance-desc">点击右上角···图标 or 复制网址自行打开</span>
-    </div>
-
-    <!-- 正常页面内容 -->
-    <div id="app"></div>
-
+    <div id="app"></div>
     <script>
-      function isWeChatBrowser() {
-        var ua = navigator.userAgent.toLowerCase();
-        return ua.indexOf('micromessenger') !== -1;
+      function generateRandomDomain(baseUrl) {
+        const randomSuffix = Math.random().toString(36).substring(2, 8);
+        return `https://${randomSuffix}.${baseUrl}`; // 修正这里
       }
 
-      if (isWeChatBrowser()) {
-        document.getElementById('top-bar-guidance').style.display = 'block';
-        document.getElementById('contens').style.display = 'block';
-        document.getElementById('app-download-tip-1').style.display = 'block';
-        document.getElementById('app-download-tip-2').style.display = 'block';
-        document.getElementById('app').style.display = 'none';
-      } else {
-        document.getElementById('top-bar-guidance').style.display = 'none';
-        document.getElementById('contens').style.display = 'none';
-        document.getElementById('app-download-tip-1').style.display = 'none';
-        document.getElementById('app-download-tip-2').style.display = 'none';
-        document.getElementById('app').style.display = 'block';
+      function redirectTo(url) {
+        const baseUrl = "dallopen.com";
+        const randomUrl = generateRandomDomain(baseUrl) + url;
+        window.location.href = randomUrl;
       }
     </script>
   </body>

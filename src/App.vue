@@ -1,5 +1,6 @@
 <template>
-  <n-config-provider :theme="isDarkTheme ? darkTheme : ''">
+  <WechatAlert />
+  <n-config-provider :theme="isDarkTheme ? darkTheme : ''" v-if="!isWechat">
     <GitHub />
     <n-loading-bar-provider>
       <Index :isDarkTheme="isDarkTheme" @changeIsDarkTheme="changeIsDarkTheme" />
@@ -8,29 +9,38 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, ref, onMounted } from 'vue'
 import { darkTheme } from 'naive-ui'
-import GitHub from './components/Github.vue'
+import Mirror from './components/mirror.vue'
 import Index from './components/index.vue'
+import WechatAlert from './components/WechatAlert.vue'
+
 export default defineComponent({
   components: {
     Index,
-    GitHub
+    Mirror,
+    WechatAlert
   },
   setup() {
     const KEY = 'isDarkTheme';
     const localDarkTheme = localStorage.getItem(KEY);
-
-    // 默认为亮色主题
-    // const isDarkTheme = ref(!localDarkTheme ? true : localDarkTheme === 'true');
     const isDarkTheme = ref(localDarkTheme === 'true');
+    const isWechat = ref(false);
+
+    onMounted(() => {
+      const ua = navigator.userAgent.toLowerCase();
+      isWechat.value = ua.indexOf('micromessenger') !== -1;
+    });
+
     const changeIsDarkTheme = (v) => {
       isDarkTheme.value = v;
       localStorage.setItem(KEY, v);
     }
+
     return {
       darkTheme,
       isDarkTheme,
+      isWechat,
       changeIsDarkTheme
     }
   }

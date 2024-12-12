@@ -1,4 +1,12 @@
 <template>
+    <div v-if="tempnotice" class="web_notice" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.3);z-index: 99999;">
+    <div style="position: fixed;top: 50%;left: 50%;width: 550px;background: #FFF;transform: translate(-50%, -50%);border-radius: 40px;padding: 50px 40px;">
+      <h3 style="font-weight: bold;text-align: center;font-size: 30px;">临时通知</h3>
+      <div style="font-size: 16px;margin-top: 26px;line-height: 30px;color: #999;" v-html="tempnotice"></div>
+      <a style="display: block;background: #98a3ff;color: #FFF;text-align: center;font-weight: bold;font-size: 19px;line-height: 60px;margin: 0 auto;margin-top: 45px;border-radius: 32px;width: 80%;" 
+         @click="closeTempNotice">确定</a>
+    </div>
+  </div>
   <n-global-style />
   <n-grid class="notice" x-gap="12" :cols="1" :style="theme()">
     <n-gi>
@@ -83,6 +91,7 @@ export default {
   },
   data() {
     return {
+      tempnotice: "",
       itemslist: [],
       itemsplus: [],
       notice: "",
@@ -105,6 +114,9 @@ export default {
   },
 
   methods: {
+    closeTempNotice() {
+      this.tempnotice = "";
+    },
     handleVisibilityChange() {
       if (!document.hidden) {
         /**
@@ -166,6 +178,7 @@ export default {
             return;
           }
           this.notice = response.data.notice;
+          this.tempnotice = response.data.tempnotice;
           this.total = response.data?.data?.pagination?.total ?? 0;
 
           this.page += 1;
