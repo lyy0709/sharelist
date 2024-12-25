@@ -34,11 +34,11 @@
               {{ item.label }}
             </n-button>
 
-            <n-button v-if="item.label.toLowerCase() === 'plus' && item.carID.toLowerCase().startsWith('t')"
+            <n-button v-if="item.isPlus === 1 && item.carID.toLowerCase().startsWith('t')"
                       text-color="white" :color="'#68bceb'" type="tertiary" size="small" style="margin-left: 4px">
               TEAM
             </n-button>
-            <n-button v-if="item.label.toLowerCase() === 'plus' && item.carID.toLowerCase().startsWith('p')"
+            <n-button v-if="item.isPlus === 1 && item.carID.toLowerCase().startsWith('p')"
                       text-color="white" :color="'#ffd700'" type="tertiary" size="small" style="margin-left: 4px">
               PRO
             </n-button>
