@@ -29,19 +29,21 @@
               @click="redirectTo(item.carID)">
         <div style="display: flex;align-items: center;justify-content: space-between;">
           <div style="display: flex;align-items: center;">
-            <n-button text-color="white" :color="item.isPlus === 0 ? '#19c37d' : '#ab68ff'" type="tertiary"
-                      size="small">
+            <n-button v-if="item.isPlus === 0" text-color="white" :color="'#19c37d'" type="tertiary" size="small">
               {{ item.label }}
             </n-button>
-
-            <n-button v-if="item.isPlus === 1 && item.carID.toLowerCase().startsWith('t')"
+            <n-button v-else-if="item.isPlus === 1 && item.carID.toLowerCase().startsWith('t')"
                       text-color="white" :color="'#68bceb'" type="tertiary" size="small" style="margin-left: 4px">
               TEAM
             </n-button>
-            <n-button v-if="item.isPlus === 1 && item.carID.toLowerCase().startsWith('p')"
+            <n-button v-else-if="item.isPlus === 1 && item.carID.toLowerCase().startsWith('p')"
                       text-color="white" :color="'#ffd700'" type="tertiary" size="small" style="margin-left: 4px">
               PRO
             </n-button>
+            <n-button v-else text-color="white" :color="'#ab68ff'" type="tertiary" size="small" style="margin-left: 4px">
+              {{ item.label }}
+            </n-button>
+
           </div>
           <n-text class="title">{{ item.carID }}</n-text>
         </div>
